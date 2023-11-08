@@ -9,6 +9,7 @@ window.addEventListener("load", function() {
 document.querySelector("#play").addEventListener("click", function() {
 	video.play();
 	document.querySelector("#volume").innerHTML = document.querySelector("#slider").value + "%";
+	video.volume = document.querySelector("#slider").value / 100;
 });
 
 document.querySelector("#pause").addEventListener("click", function() {
@@ -42,16 +43,19 @@ document.querySelector("#mute").addEventListener("click", function() {
 		this.innerHTML = "Unmute";
 		document.querySelector("#volume").innerHTML = 0 + "%";
 		document.querySelector("#slider").value = 0;
+		video.volume = 0;
 	}
 	else if (this.innerHTML == "Unmute") {
 		this.innerHTML = "Mute";
 		document.querySelector("#volume").innerHTML = 100 + "%";
 		document.querySelector("#slider").value = 100;
+		video.volume = 1;
 	}
 });
 
 document.querySelector("#slider").addEventListener("click", function() {
 	document.querySelector("#volume").innerHTML = document.querySelector("#slider").value + "%";
+	video.volume = document.querySelector("#slider").value / 100;
 });
 
 document.querySelector("#vintage").addEventListener("click", function() {
